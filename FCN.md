@@ -15,6 +15,7 @@ n.fuse_pool4 = L.Eltwise(n.upscore2, n.score_pool4c,
             operation=P.Eltwise.SUM)
 ```
 Then they recover to the original size and do a prediction.
+```
 n.upscore16 = L.Deconvolution(n.fuse_pool4,
         convolution_param=dict(num_output=21, kernel_size=32, stride=16,
             bias_term=False),
@@ -23,9 +24,11 @@ n.upscore16 = L.Deconvolution(n.fuse_pool4,
  n.score = crop(n.upscore16, n.data)
  n.loss = L.SoftmaxWithLoss(n.score, n.label,
             loss_param=dict(normalize=False, ignore_label=255))
+ ```
 
 since I am not Caffe user, so I also use a [tensorflow implemetion](https://github.com/sagieppel/Fully-convolutional-neural-network-FCN-for-semantic-segmentation-Tensorflow-implementation/blob/master/BuildNetVgg16.py) as a reference to usderstand:
 
+```
 #now to upscale to actual image size
 deconv_shape1 = self.pool4.get_shape()  # Set the output shape for the the transpose convolution output take only the depth since the transpose convolution will have to have the same depth for output
 W_t1 = utils.weight_variable([4, 4, deconv_shape1[3].value, NUM_CLASSES],name="W_t1")  # Deconvolution/transpose in size 4X4 note that the output shape is of  depth NUM_OF_CLASSES this is not necessary in will need to be fixed if you only have 2 catagories
@@ -47,3 +50,4 @@ self.Prob = utils.conv2d_transpose_strided(self.fuse_2, W_t3, b_t3, output_shape
 
 #--------------------Transform  probability vectors to label maps-----------------------------------------------------------------
 self.Pred = tf.argmax(self.Prob, dimension=3, name="Pred")
+```
