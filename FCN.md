@@ -26,7 +26,7 @@ n.upscore16 = L.Deconvolution(n.fuse_pool4,
             loss_param=dict(normalize=False, ignore_label=255))
  ```
 
-since I am not Caffe user, so I also use a [tensorflow implemetion](https://github.com/sagieppel/Fully-convolutional-neural-network-FCN-for-semantic-segmentation-Tensorflow-implementation/blob/master/BuildNetVgg16.py) as a reference to usderstand:
+since I am not Caffe user, I also read a [tensorflow implemetion](https://github.com/sagieppel/Fully-convolutional-neural-network-FCN-for-semantic-segmentation-Tensorflow-implementation/blob/master/BuildNetVgg16.py) as a reference to usderstand:
 
 ```
 #now to upscale to actual image size
