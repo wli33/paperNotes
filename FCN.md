@@ -53,6 +53,5 @@ self.Prob = utils.conv2d_transpose_strided(self.fuse_2, W_t3, b_t3, output_shape
 #--------------------Transform  probability vectors to label maps-----------------------------------------------------------------
 self.Pred = tf.argmax(self.Prob, dimension=3, name="Pred")
 ```
-Reference
----------
+####Reference
 Long J, Shelhamer E, Darrell T. Fully convolutional networks for semantic segmentation[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2015: 3431-3440.
