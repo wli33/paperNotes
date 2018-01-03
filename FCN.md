@@ -1,7 +1,7 @@
 While reading the paper [Fully Convolutional Networks
 for Semantic Segmentation](https://arxiv.org/pdf/1605.06211.pdf), some steps are ambiguous to me, e.g. section 4.3 Combining what and where:"our skips are implemented by first scoring each layer to be fused by 1 × 1 convolution, carrying out any necessary interpolation and alignment, and then summing the scores."
 
-![](http://img.blog.csdn.net/20160514051444532)
+![](https://i.stack.imgur.com/1IPxQ.png)
 
 In their [implemention](https://github.com/shelhamer/fcn.berkeleyvision.org), take fcn16 as an example, the authors use caffe to get  a trans-conv layer and crop the pool4 to the same size, then the fuse layer adds element-wise.
 ```
