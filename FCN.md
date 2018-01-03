@@ -2,7 +2,7 @@ While reading the paper [Fully Convolutional Networks
 for Semantic Segmentation](https://arxiv.org/pdf/1605.06211.pdf), some steps are ambiguous to me, e.g. section 4.3 Combining what and where:"our skips are implemented by first scoring each layer to be fused by 1 × 1 convolution, carrying out any necessary interpolation and alignment, and then summing the scores."
 
 In their [implemention](https://github.com/shelhamer/fcn.berkeleyvision.org), take fcn16 as an example, the authors use caffe to get  a trans-conv layer and crop the pool4 to the same size, then the fuse layer adds element-wise.
-
+```
 n.upscore2 = L.Deconvolution(n.score_fr,
         convolution_param=dict(num_output=21, kernel_size=4, stride=2,
             bias_term=False),
@@ -13,7 +13,7 @@ n.score_pool4 = L.Convolution(n.pool4, num_output=21, kernel_size=1, pad=0,
 n.score_pool4c = crop(n.score_pool4, n.upscore2)
 n.fuse_pool4 = L.Eltwise(n.upscore2, n.score_pool4c,
             operation=P.Eltwise.SUM)
-          
+```
 Then they recover to the original size and do a prediction.
 n.upscore16 = L.Deconvolution(n.fuse_pool4,
         convolution_param=dict(num_output=21, kernel_size=32, stride=16,
