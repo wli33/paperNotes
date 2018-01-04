@@ -1,5 +1,5 @@
 Fully Convolutional Networks
-____
+----
 While reading the paper [Fully Convolutional Networks
 for Semantic Segmentation](https://arxiv.org/pdf/1605.06211.pdf), some steps are ambiguous to me, e.g. section 4.3 Combining what and where:"our skips are implemented by first scoring each layer to be fused by 1 × 1 convolution, carrying out any necessary interpolation and alignment, and then summing the scores."
 
