@@ -29,7 +29,25 @@ n.upscore16 = L.Deconvolution(n.fuse_pool4,
  n.loss = L.SoftmaxWithLoss(n.score, n.label,
             loss_param=dict(normalize=False, ignore_label=255))
  ```
+In fcn8, the resulted fuse layer is continued to be applied to a trans-conv layer and combined with pool3 layer.
+```
+n.upscore_pool4_sem  = L.Deconvolution(n.fuse_pool4_sem,
+        convolution_param=dict(num_output=33, kernel_size=4, stride=2,
+            bias_term=False),
+        param=[dict(lr_mult=0)])
+n.score_pool3_sem = L.Convolution(n.pool3, num_output=33, kernel_size=1,
+            pad=0, param=[dict(lr_mult=1, decay_mult=1), dict(lr_mult=2,
+                decay_mult=0)])
+n.score_pool3_semc = crop(n.score_pool3_sem, n.upscore_pool4_sem)
+n.fuse_pool3_sem = L.Eltwise(n.upscore_pool4_sem, n.score_pool3_semc,
+            operation=P.Eltwise.SUM)
+n.upscore8_sem = L.Deconvolution(n.fuse_pool3_sem,
+        convolution_param=dict(num_output=33, kernel_size=16, stride=8,
+            bias_term=False),
+        param=[dict(lr_mult=0)])
 
+n.score_sem = crop(n.upscore8_sem, n.data)
+```
 since I am not Caffe user, I also read a [tensorflow implemetion](https://github.com/sagieppel/Fully-convolutional-neural-network-FCN-for-semantic-segmentation-Tensorflow-implementation/blob/master/BuildNetVgg16.py) as a reference to usderstand:
 
 ```
