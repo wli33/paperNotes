@@ -31,7 +31,7 @@ n.upscore16 = L.Deconvolution(n.fuse_pool4,
  ```
 In fcn8, the resulted fuse layer is again applied to a trans-conv layer and combined with pool3 layer.
 ```
-n.upscore_pool4_sem  = L.Deconvolution(n.fuse_pool4_sem, # n.fuse_pool4 in fcn16
+n.upscore_pool4_sem  = L.Deconvolution(n.fuse_pool4_sem, #n.fuse_pool4 in fcn16
         convolution_param=dict(num_output=33, kernel_size=4, stride=2,
             bias_term=False),
         param=[dict(lr_mult=0)])
@@ -74,5 +74,4 @@ self.Prob = utils.conv2d_transpose_strided(self.fuse_2, W_t3, b_t3, output_shape
 self.Pred = tf.argmax(self.Prob, dimension=3, name="Pred")
 ```
 ### Reference
-
-Long J, Shelhamer E, Darrell T. Fully convolutional networks for semantic segmentation[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2015: 3431-3440.
+Long, Jonathan, Evan Shelhamer, and Trevor Darrell. “Fully convolutional networks for semantic segmentation.” Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2015. 
