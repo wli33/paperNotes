@@ -29,9 +29,9 @@ n.upscore16 = L.Deconvolution(n.fuse_pool4,
  n.loss = L.SoftmaxWithLoss(n.score, n.label,
             loss_param=dict(normalize=False, ignore_label=255))
  ```
-In fcn8, the resulted fuse layer is continued to be applied to a trans-conv layer and combined with pool3 layer.
+In fcn8, the resulted fuse layer is again applied to a trans-conv layer and combined with pool3 layer.
 ```
-n.upscore_pool4_sem  = L.Deconvolution(n.fuse_pool4_sem,
+n.upscore_pool4_sem  = L.Deconvolution(n.fuse_pool4_sem, # n.fuse_pool4 in fcn16
         convolution_param=dict(num_output=33, kernel_size=4, stride=2,
             bias_term=False),
         param=[dict(lr_mult=0)])
