@@ -5,7 +5,7 @@ for Semantic Segmentation](https://arxiv.org/pdf/1605.06211.pdf), some steps are
 
 ![](https://i.stack.imgur.com/1IPxQ.png)
 
-In their [implemention](https://github.com/shelhamer/fcn.berkeleyvision.org), take fcn16 as an example, the authors use caffe to get a trans-conv layer and crop the pool4 to the same size with upscore2, then the fuse layer adds them element-wise.
+In their [implemention](https://github.com/shelhamer/fcn.berkeleyvision.org), take fcn16 as an example, the authors use caffe to get a trans-conv layer upscore2 and crop the pool4 to the same size with it, then another fuse layer adds them element-wise.
 ```
 n.upscore2 = L.Deconvolution(n.score_fr,
         convolution_param=dict(num_output=21, kernel_size=4, stride=2,
