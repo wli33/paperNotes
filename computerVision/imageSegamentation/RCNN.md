@@ -13,5 +13,9 @@ The first step is based on [Efficient Graph-Based Image Segmentation](http://peo
 The following are send to CNN. 
 Note in cs231n, the detection part can also use "regression head" in the final layer. But it takes longer time for the loss to converge. Summary can be found [here](https://www.cnblogs.com/skyfsm/p/6806246.html).
 
+#### SPP Net
+Two improvements:
+a. Select Bbox on the CNN feature maps. speed 100x RCNN.
+b. Add a SPP layer. The selected CNN features can send any size to SPP layer and it will produce fix size output. 
 #### Fast RCNN
 (To be continued)
