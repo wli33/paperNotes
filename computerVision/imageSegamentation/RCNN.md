@@ -19,7 +19,7 @@ Two improvements:
 b. Add SPP layer. The selected CNN features can send any size to SPP layer and it will produce fix size output. 
 #### Fast RCNN
 1. RoI pooling layer: a simplified one layer of SPP.
-2. Multi-task model. loss has 2 parts: classification loss and regression loss for the Bbox.
+2. Multi-task model. loss has 2 parts: classification loss and regression loss for the Bbox. see [page 3 of the paper](https://arxiv.org/pdf/1504.08083.pdf)
 ![](http://img.blog.csdn.net/20160411154103099)
 
 (To be continued)
