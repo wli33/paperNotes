@@ -15,7 +15,11 @@ Note in cs231n, the detection part can also use "regression head" in the final l
 
 #### SPP Net
 Two improvements:    
-a. Select Bbox on the CNN feature maps. speed 100x RCNN.  
-b. Add a SPP layer. The selected CNN features can send any size to SPP layer and it will produce fix size output. 
+1. Select Bbox on the CNN feature maps. speed 100x RCNN.  
+b. Add SPP layer. The selected CNN features can send any size to SPP layer and it will produce fix size output. 
 #### Fast RCNN
+1. RoI pooling layer: a simplified one layer of SPP.
+2. Multi-task model. loss has 2 parts: classification loss and regression loss for the Bbox.
+![](http://img.blog.csdn.net/20160411154103099)
+
 (To be continued)
