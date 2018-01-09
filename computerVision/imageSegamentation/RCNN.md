@@ -31,9 +31,9 @@ One network, four losses (credit: Ross Girschick)
 - Fast R-CNN classification (over classes)
 - Fast R-CNN regression (proposal -> box)
 #### YOLO: You Only Look Once 
-Divide image into S x S grid
-Within each grid cell predict: B Boxes: 4 coordinates + confidence Class scores: C numbers
-Direct prediction using a CNN
+Divide image into S x S grid;
+Within each grid cell predict: B Boxes: 4 coordinates + confidence Class scores: C numbers;
+Direct prediction using a CNN;
 Faster than Faster R-CNN vgg16(FPS:45 vs 7), but not as good (mAP: 63.4 vs 73.2)
 
 (To be continued)
