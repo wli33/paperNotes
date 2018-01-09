@@ -15,15 +15,15 @@ Note in cs231n, the detection part can also use "regression head" in the final l
 
 #### SPP Net
 Two improvements:    
-1. Select Bbox on the CNN feature maps. speed 100x RCNN.  
-b. Add SPP layer. The selected CNN features can send any size to SPP layer and it will produce fix size output. 
+1. Select Bbox on the CNN feature maps. speed 100x RCNN.        
+2. Add SPP layer. The selected CNN features can send any size to SPP layer and it will produce fix size output. 
 #### Fast RCNN
 1. RoI pooling layer: a simplified one layer of SPP.
 2. Multi-task model. loss has 2 parts: classification loss and regression loss for the Bbox. see [page 3 of the paper](https://arxiv.org/pdf/1504.08083.pdf)
 ![](http://img.blog.csdn.net/20160411154103099)
 #### Faster RCNN
 Add a Region Proposal Network (RPN) to produce region proposals directly; no need for external region proposals.
-use RoI Pooling to combine the proposal and feature map, send to upstream classifier and bbox regressor just like Fast R-CNN.
+Use RoI Pooling to combine the proposal and feature map, send to upstream classifier and bbox regressor just like Fast R-CNN.
 
 One network, four losses (Ross Girschick)
 - RPN classification (anchor good / bad)
@@ -31,9 +31,9 @@ One network, four losses (Ross Girschick)
 - Fast R-CNN classification (over classes)
 - Fast R-CNN regression (proposal -> box)
 #### YOLO: You Only Look Once 
-Divide image into S x S grid;
-Within each grid cell predict: B Boxes: 4 coordinates + confidence Class scores: C numbers;
-Direct prediction using a CNN;
+Divide image into S x S grid;      
+Within each grid cell predict: B Boxes: 4 coordinates + confidence Class scores: C numbers;     
+Direct prediction using a CNN;      
 Faster than Faster R-CNN vgg16(FPS:45 vs 7), but not as good (mAP: 63.4 vs 73.2)
 
 (To be continued)
