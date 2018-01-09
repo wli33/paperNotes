@@ -34,9 +34,10 @@ One network, four losses (credit: Ross Girschick)
 Divide image into S x S grid
 Within each grid cell predict: B Boxes: 4 coordinates + confidence Class scores: C numbers
 Direct prediction using a CNN
-Faster than Faster R-CNN, but not as good
+Faster than Faster R-CNN vgg16(FPS:45 vs 7), but not as good (mAP: 63.4 vs 73.2)
+
+(To be continued)
 
 Reference
 ----
 Redmon et al, “You Only Look Once: Unified, Real-Time Object Detection”, arXiv 2015
-(To be continued)
