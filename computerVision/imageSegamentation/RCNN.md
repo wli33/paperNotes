@@ -25,7 +25,7 @@ b. Add SPP layer. The selected CNN features can send any size to SPP layer and i
 Add a Region Proposal Network (RPN) to produce region proposals directly; no need for external region proposals.
 use RoI Pooling to combine the proposal and feature map, send to upstream classifier and bbox regressor just like Fast R-CNN.
 
-One network, four losses (credit: Ross Girschick)
+One network, four losses (Ross Girschick)
 - RPN classification (anchor good / bad)
 - RPN regression (anchor -> proposal)
 - Fast R-CNN classification (over classes)
@@ -40,4 +40,7 @@ Faster than Faster R-CNN vgg16(FPS:45 vs 7), but not as good (mAP: 63.4 vs 73.2)
 
 Reference
 ----
+Girschick et al, “Rich feature hierarchies for accurate object detection and semantic segmentation”, CVPR 2014 
+Girschick, “Fast R-CNN”, ICCV 2015
 Redmon et al, “You Only Look Once: Unified, Real-Time Object Detection”, arXiv 2015
+Ren et al, “Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks”, NIPS 2015
