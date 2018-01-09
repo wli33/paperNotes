@@ -40,7 +40,7 @@ Faster than Faster R-CNN vgg16(FPS:45 vs 7), but not as good (mAP: 63.4 vs 73.2)
 
 Reference
 ----
-Girschick et al, “Rich feature hierarchies for accurate object detection and semantic segmentation”, CVPR 2014 
-Girschick, “Fast R-CNN”, ICCV 2015 
-Redmon et al, “You Only Look Once: Unified, Real-Time Object Detection”, arXiv 2015  
+Girschick et al, “Rich feature hierarchies for accurate object detection and semantic segmentation”, CVPR 2014         
+Girschick, “Fast R-CNN”, ICCV 2015                 
+Redmon et al, “You Only Look Once: Unified, Real-Time Object Detection”, arXiv 2015            
 Ren et al, “Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks”, NIPS 2015  
