@@ -21,5 +21,22 @@ b. Add SPP layer. The selected CNN features can send any size to SPP layer and i
 1. RoI pooling layer: a simplified one layer of SPP.
 2. Multi-task model. loss has 2 parts: classification loss and regression loss for the Bbox. see [page 3 of the paper](https://arxiv.org/pdf/1504.08083.pdf)
 ![](http://img.blog.csdn.net/20160411154103099)
+#### Faster RCNN
+Add a Region Proposal Network (RPN) to produce region proposals directly; no need for external region proposals.
+use RoI Pooling to combine the proposal and feature map, send to upstream classifier and bbox regressor just like Fast R-CNN.
 
+One network, four losses (credit: Ross Girschick)
+- RPN classification (anchor good / bad)
+- RPN regression (anchor -> proposal)
+- Fast R-CNN classification (over classes)
+- Fast R-CNN regression (proposal -> box)
+#### YOLO: You Only Look Once 
+Divide image into S x S grid
+Within each grid cell predict: B Boxes: 4 coordinates + confidence Class scores: C numbers
+Direct prediction using a CNN
+Faster than Faster R-CNN, but not as good
+
+Reference
+----
+Redmon et al, “You Only Look Once: Unified, Real-Time Object Detection”, arXiv 2015
 (To be continued)
