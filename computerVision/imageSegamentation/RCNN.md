@@ -43,4 +43,5 @@ Reference
 Girschick et al, “Rich feature hierarchies for accurate object detection and semantic segmentation”, CVPR 2014         
 Girschick, “Fast R-CNN”, ICCV 2015                 
 Redmon et al, “You Only Look Once: Unified, Real-Time Object Detection”, arXiv 2015            
-Ren et al, “Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks”, NIPS 2015  
+Ren et al, “Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks”, NIPS 2015      
+Uijlings et al, “Selective Search for Object Recognition”, IJCV 2013
