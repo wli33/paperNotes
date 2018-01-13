@@ -10,8 +10,22 @@ The first step is based on [Efficient Graph-Based Image Segmentation](http://peo
 
 [Segamentation Algorithm](http://img.blog.csdn.net/20140904111504850?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VyZ2V3b25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
-The following are send to CNN. 
-Note in cs231n, the detection part can also use "regression head" in the final layer. But it takes longer time for the loss to converge. Summary can be found [here](https://www.cnblogs.com/skyfsm/p/6806246.html).
+The following are send to CNN:
+```
+    img_path = 'testimg7.jpg'
+    #get proposals
+    imgs, verts = image_proposal(img_path) 
+    net = create_alexnet(3) # num_classes:3 including bg class 0
+    model = tflearn.DNN(net)
+    model.load('fine_tune_model_save.model')
+    svms = train_svms(train_file_folder, model)
+    features = model.predict(imgs)
+    
+    for f in features:
+        for i in svms:
+	    pred = i.predict(f)
+```
+
 
 #### SPP Net
 Two improvements:    
