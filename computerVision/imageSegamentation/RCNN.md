@@ -1,4 +1,4 @@
-From RCNN to mask-RCNN
+From RCNN to fast-RCNN
 ---------
 #### RCNN
 while reading paper [RCNN](https://arxiv.org/abs/1311.2524), I am not clear about how selection search works.
@@ -21,6 +21,9 @@ Two improvements:
 1. RoI pooling layer: a simplified one layer of SPP.
 2. Multi-task model. loss has 2 parts: classification loss and regression loss for the Bbox. see [page 3 of the paper](https://arxiv.org/pdf/1504.08083.pdf)
 ![](http://img.blog.csdn.net/20160411154103099)
+
+L1 loss is less sensitive to outliner than L2. grad(L1):1/-1; grad(L2): x to avoid grad exploding. smoothed L1: grad = x if |x|<i else 1/-1.
+
 #### Faster RCNN
 Add a Region Proposal Network (RPN) to produce region proposals directly; no need for external region proposals.
 Use RoI Pooling to combine the proposal and feature map, send to upstream classifier and bbox regressor just like Fast R-CNN.
