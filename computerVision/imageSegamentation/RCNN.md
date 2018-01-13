@@ -39,6 +39,10 @@ Within each grid cell predict: B Boxes: 4 coordinates + confidence Class scores:
 Direct prediction using a CNN;      
 Faster than Faster R-CNN vgg16(FPS:45 vs 7), but not as good (mAP: 63.4 vs 73.2)
 
+#### Mask-RCNN
+![](http://img.blog.csdn.net/20170614225558493)
+1.Roi Pooling->RoiAlign
+2. Add Loss for mask
 (To be continued)
 
 Reference
