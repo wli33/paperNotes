@@ -1,4 +1,4 @@
-From RCNN to fast-RCNN
+From RCNN to Mask-RCNN
 ---------
 #### RCNN
 while reading paper [RCNN](https://arxiv.org/abs/1311.2524), I am not clear about how selection search works.
@@ -23,7 +23,7 @@ else:
     if iou_val < threshold: labels.append(0)
     else: labels.append(index)
 ```
-The following are sent to CNN (use SVM as final layer rather than softmax). e.g. Fc7:2k * 4096 features, Weights_svm: 4096* classes, final result: 2k * C.
+The following are sent to CNN (use SVM as final layer rather than softmax). e.g. Fc7:2k * 4096 features, Weights_svm: 4096* C, final result: 2k * C.
 ```
     img_path = 'testimg7.jpg'
     #get proposals
