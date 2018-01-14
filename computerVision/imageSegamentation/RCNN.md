@@ -10,7 +10,7 @@ The first step is based on [Efficient Graph-Based Image Segmentation](http://peo
 
 [Segamentation Algorithm](http://img.blog.csdn.net/20140904111504850?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VyZ2V3b25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
-First get ~2k proposals and labels in training set. If IoU<threshold, set Y class = bg.
+First get ~2k proposed images and labels in training set. If IoU<threshold, set Y class = bg.
 in AlexNet threshold = 0.5 for fine-tune, 0.3 for svm.
 ```
 if svm == False:
