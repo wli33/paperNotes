@@ -11,21 +11,19 @@ The first step is based on [Efficient Graph-Based Image Segmentation](http://peo
 [Segamentation Algorithm](http://img.blog.csdn.net/20140904111504850?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3VyZ2V3b25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 First get ~2k proposed images and labels in training set. If IoU<threshold, reset Y class = bg instead of given label.
-in AlexNet threshold = 0.5 for fine-tune, 0.3 for svm.
+In AlexNet threshold = 0.5 for fine-tune, 0.3 for svm.
 ```
 index = int(tmp[1]) # tmp1 = label in txt file
 if svm == False:
     label = np.zeros(num_clss+1)
-    if iou_val < threshold:
-        label[0] = 1
-    else:
-        label[index] = 1
+    if iou_val < threshold: label[0] = 1
+    else: label[index] = 1
     labels.append(label)
 else:
     if iou_val < threshold: labels.append(0)
     else: labels.append(index)
 ```
-The following are send to CNN (use SVM instead of softmax). e.g. Fc7:2k proposals * 4096 features Weights_svm: 4096* num of classes final result: 2k * N.
+The following are send to CNN (use SVM as final layer rather than softmax). e.g. Fc7:2k proposals * 4096 features Weights_svm: 4096* num of classes final result: 2k * N.
 ```
     img_path = 'testimg7.jpg'
     #get proposals
