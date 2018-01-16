@@ -54,8 +54,8 @@ From conv5->fc6: size:axa(13x13) n=pool(3x3) win = ceil(a/n) and stride str = fl
 |sizeX=5      |    sizeX=7       |     sizeX=13     |
 |stride=4     |    stride=6      |    stride=6      |
 
-dog | bird | cat
-----|------|----
+pool3x3 | pool2x2 | pool1x1 |    fc6    
+--------|---------|---------|--------
 foo | foo  | foo
 bar | bar  | bar
 baz | baz  | baz
