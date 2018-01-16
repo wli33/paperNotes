@@ -57,6 +57,10 @@ stride=4     | stride=6    | stride=6    |
 
 input->conv5->get ~2k proposal feature maps->SPP layer->fc->svm
 
+Mapping a Window to Feature Maps:  
+(x,y)=(S*x’,S*y’)  S = products of all strides in conv and pool layer   
+so left,top: x' = floor(x/S)+1   right、bottom：x' = ceil(x/S)-1 
+
 #### Fast RCNN
 1. RoI pooling layer: a simplified one layer of SPP.
 2. Multi-task model. loss has 2 parts: classification loss and regression loss for the Bbox. see [page 3 of the paper](https://arxiv.org/pdf/1504.08083.pdf)
