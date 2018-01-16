@@ -55,8 +55,12 @@ From conv5->fc6: size:axa(13x13) n=pool(3x3) win = ceil(a/n) and stride str = fl
 |stride=4     |    stride=6      |    stride=6      |
 
 pool3x3 | pool2x2 | pool1x1 |    fc6    
---------|---------|---------|--------
-foo | foo  | foo
+--------------|-------------|---------|--------
+type=pool     | type=pool   | type=pool |   type=fc    |
+|pool=max     |   pool=max       |   pool=max       |   outputs=4096 |
+|inputs=conv5 |    inputs=conv5  |   inputs=conv5   |   inputs=pool3x3,pool2x2,pool1x1/filter|
+|sizeX=5      |    sizeX=7       |     sizeX=13     |
+|stride=4     |    stride=6      |    stride=6      |
 bar | bar  | bar
 baz | baz  | baz
 
