@@ -54,6 +54,11 @@ From conv5->fc6: size:axa(13x13) n=pool(3x3) win = ceil(a/n) and stride str = fl
 |sizeX=5      |    sizeX=7       |     sizeX=13     |
 |stride=4     |    stride=6      |    stride=6      |
 
+dog | bird | cat
+----|------|----
+foo | foo  | foo
+bar | bar  | bar
+baz | baz  | baz
 
 #### Fast RCNN
 1. RoI pooling layer: a simplified one layer of SPP.
