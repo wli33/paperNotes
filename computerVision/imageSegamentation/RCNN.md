@@ -41,9 +41,19 @@ The following are sent to CNN (use SVM as final layer rather than softmax). e.g.
 
 
 #### SPP Net
+crops and wrap cause loss of info or distortion. Fixed-size only needs for fc layer.
 Two improvements:    
 1. Select Bbox on the CNN feature maps. speed 100x RCNN.        
-2. Add SPP layer. The selected CNN features can send any size to SPP layer and it will produce fix size output. 
+2. Add SPP layer. The selected CNN features can send any size to SPP layer and it will produce fix size output.  
+From conv5->fc6: size:axa(13x13) n=pool(3x3) win = ceil(a/n) and stride str = floor(a/n). total:15xnum of filer(256)
+[pool3x3]        [pool2x2]         [pool1x1]         [fc6]
+type=pool        type=pool         type=pool         type=fc
+pool=max         pool=max          pool=max          outputs=4096
+inputs=conv5     inputs=conv5      inputs=conv5      inputs=pool3x3,pool2x2,pool1x1/filter
+sizeX=5          sizeX=7           sizeX=13
+stride=4         stride=6          stride=6
+
+
 #### Fast RCNN
 1. RoI pooling layer: a simplified one layer of SPP.
 2. Multi-task model. loss has 2 parts: classification loss and regression loss for the Bbox. see [page 3 of the paper](https://arxiv.org/pdf/1504.08083.pdf)
