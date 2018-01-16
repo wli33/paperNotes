@@ -58,8 +58,9 @@ stride=4     | stride=6    | stride=6    |
 input->conv5->get ~2k proposal feature maps->SPP layer->fc->svm
 
 Mapping a Window to Feature Maps:  
-(x,y)=(S*x’,S*y’)  S = products of all strides in conv and pool layer   
+(x,y)=(S*x’,S*y’)  S = products of all strides in conv and pool layer, pad floor(p/2) pixels for a layer with a filter size of p  
 so left,top: x' = floor(x/S)+1   right, bottom：x' = ceil(x/S)-1 
+If the padding is not floor(p/2), need to add a proper offset to x.
 
 #### Fast RCNN
 1. RoI pooling layer: a simplified one layer of SPP.
