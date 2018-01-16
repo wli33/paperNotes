@@ -68,6 +68,7 @@ shape = tf.shape(rgb)
 W_t3 = utils.weight_variable([16, 16, NUM_CLASSES, deconv_shape2[3].value], name="W_t3")
 b_t3 = utils.bias_variable([NUM_CLASSES], name="b_t3")
 
+#output classes: cat,horse etc.
 self.Prob = utils.conv2d_transpose_strided(self.fuse_2, W_t3, b_t3, output_shape=[shape[0], shape[1], shape[2], NUM_CLASSES], stride=8)
 
 #--------------------Transform  probability vectors to label maps-----------------------------------------------------------------
