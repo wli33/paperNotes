@@ -55,6 +55,7 @@ inputs=conv5 | inputs=conv5| inputs=conv5|   inputs=pool3x3,pool2x2,pool1x1/filt
 sizeX=5      | sizeX=7     | sizeX=13    |
 stride=4     | stride=6    | stride=6    |
 
+input->conv5->get ~2k proposal feature maps->SPP layer->fc->svm
 
 #### Fast RCNN
 1. RoI pooling layer: a simplified one layer of SPP.
