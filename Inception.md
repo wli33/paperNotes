@@ -5,7 +5,7 @@ Problems:
 1. result a larger number of parameters: prone to overfitting     
 2. increase use of computational resources
 
-![](https://img-blog.csdn.net/20170314223801066?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGJpbndvcmxk/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![source:gitbub](https://user-images.githubusercontent.com/1249087/31683804-ea24827c-b34b-11e7-9934-eaf4fc80234a.png)
 
 (to be continued)
 ### Reference
