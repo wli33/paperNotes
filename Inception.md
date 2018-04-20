@@ -4,7 +4,8 @@ Motivation: improving the performance of deep neural networks by increasing thei
 Problems:     
 1. result a larger number of parameters: prone to overfitting     
 2. increase use of computational resources
-
+#### Architectural Details
+![](https://hackathonprojects.files.wordpress.com/2016/09/naive.png?w=651&h=319)
 ![source:gitbub](https://user-images.githubusercontent.com/1249087/31683804-ea24827c-b34b-11e7-9934-eaf4fc80234a.png)
 
 (to be continued)
