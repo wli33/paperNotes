@@ -16,8 +16,11 @@ Only 5 million params. Compared to AlexNet:
 - 12X less params   
 - 2x more compute   
 - 6.67% (vs. 16.4%)   
-(to be continued)
+
 ### v2-v3
+1. use 2 3x3 to replace 5x5  
+2. use 1xn and nx1 to nxn(n:12~20)   
+(to be continued)
 ### Reference
 [v1 Going Deeper with Convolutions, 6.67% test error](http://arxiv.org/abs/1409.4842)
 [v2 Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift, 4.8% test error](http://arxiv.org/abs/1502.03167)
