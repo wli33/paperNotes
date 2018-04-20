@@ -22,7 +22,7 @@ Only 5 million params. Compared to AlexNet:
 2. use 1xn and nx1 to nxn(n:12~20)   
 (to be continued)
 ### Reference
-[v1 Going Deeper with Convolutions, 6.67% test error](http://arxiv.org/abs/1409.4842)
-[v2 Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift, 4.8% test error](http://arxiv.org/abs/1502.03167)
-[v3 Rethinking the Inception Architecture for Computer Vision, 3.5% test error](http://arxiv.org/abs/1512.00567)
+[v1 Going Deeper with Convolutions, 6.67% test error](http://arxiv.org/abs/1409.4842)   
+[v2 Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift, 4.8% test error](http://arxiv.org/abs/1502.03167)    
+[v3 Rethinking the Inception Architecture for Computer Vision, 3.5% test error](http://arxiv.org/abs/1512.00567)   
 [v4 Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning, 3.08% test error](http://arxiv.org/abs/1602.07261)
