@@ -1,7 +1,8 @@
 #### v1
-Motivation: 
-improving the performance of deep neural networks by increasing their size:depth and width.
+Motivation: improving the performance of deep neural networks by increasing their size:depth and width.
+
 Problems:
+
 1.Bigger size means a larger number of parameters: prone to overfitting.
 2. increase use of computational resources.
 (to be continued)
