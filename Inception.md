@@ -21,7 +21,14 @@ Only 5 million params. Compared to AlexNet:
 1. add BN layer
 2. use 2 3x3 to replace 5x5; use 1xn and nx1 to replace nxn(n:12~20)  
 
-BN: Accelerate Training by Reducing Internal Covariate Shift, 14 times fewer training steps. It also acts as a regularizer, in some cases eliminating the need for Dropout.     
+BN: Accelerate Training by Reducing Internal Covariate Shift, 14 times fewer training steps. It also acts as a regularizer, in some cases eliminating the need for Dropout. 
+
+#### Model Regularization via Label Smoothing  
+Motivation:1. prevent overfitting   2. increase the ability of the model to adapt(prevent model from becoming to confident)   
+How: 
+1. set it to the groundtruth label k = y; 
+2. with probability e, replace k with a sample drawn from the distribution u(k). they used the uniform distribution u(k) = 1/K  
+
 (to be continued)
 ### Reference
 [v1 Going Deeper with Convolutions, 6.67% test error](http://arxiv.org/abs/1409.4842)   
