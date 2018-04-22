@@ -19,7 +19,9 @@ Only 5 million params. Compared to AlexNet:
 
 ### v2-v3
 1. add BN layer; use 2 3x3 to replace 5x5  
-2. use 1xn and nx1 to replace nxn(n:12~20)   
+2. use 1xn and nx1 to replace nxn(n:12~20)  
+
+BN: Accelerate Training by Reducing Internal Covariate Shift, 14 times fewer training steps. It also acts as a regularizer, in some cases eliminating the need for Dropout.     
 (to be continued)
 ### Reference
 [v1 Going Deeper with Convolutions, 6.67% test error](http://arxiv.org/abs/1409.4842)   
