@@ -18,7 +18,7 @@ Only 5 million params. Compared to AlexNet:
 - 6.67% (vs. 16.4%)   
 
 ### v2-v3
-1. use 2 3x3 to replace 5x5  
+1. add BN layer; use 2 3x3 to replace 5x5  
 2. use 1xn and nx1 to replace nxn(n:12~20)   
 (to be continued)
 ### Reference
