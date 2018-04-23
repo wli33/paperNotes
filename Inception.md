@@ -33,13 +33,12 @@ How:
 
 ### v4
 Reduction achieved by valid padding.  
-V4: a pure Inception variant without residual connections with roughly the same recognition performance as Inception-ResNet-v2. more stack layers in the inception block.  
+V4: a pure Inception variant without residual connections with roughly the same recognition performance as Inception-ResNet-v2. 4,7,3 inception layers. more stack layers in the inception block.  
 "the step time of Inception-v4 proved to be significantly slower in practice, probably due to the larger number of layers."
-4,7,3 inception layers.
 
 Inception-ResNet-v1: a hybrid Inception version that has a similar computational cost to Inception-v3. 5,10,5 inception layers.
 
-Inception-ResNet-v2: a costlier hybrid Inception version with significantly improved recognition performance  
+Inception-ResNet-v2: a costlier hybrid Inception version with significantly improved recognition performance. 5,10,5 inception layers. 
 #### Scaling of the Residuals
 if the number of filters > 1000, the residual variants started to exhibit instabilities and the network has just “died” early in the training. the last layer before the average pooling started to produce only 0 after a few tens of thousands of iterations.
 This could not be prevented by lowering the learning rate nor by adding an extra BN to this layer.
