@@ -23,6 +23,8 @@ Only 5 million params. Compared to AlexNet:
 
 BN: Accelerate Training by Reducing Internal Covariate Shift, 14 times fewer training steps. It also acts as a regularizer, in some cases eliminating the need for Dropout. 
 
+v3: 3,5,2 incetion layers
+
 #### Model Regularization via Label Smoothing  
 Motivation:1. prevent overfitting   2. increase the ability of the model to adapt(prevent model from becoming to confident)   
 How: 
@@ -33,8 +35,9 @@ How:
 Reduction achieved by valid padding.  
 V4: a pure Inception variant without residual connections with roughly the same recognition performance as Inception-ResNet-v2. more stack layers in the inception block.  
 "the step time of Inception-v4 proved to be significantly slower in practice, probably due to the larger number of layers."
+4,7,3 inception layers.
 
-Inception-ResNet-v1: a hybrid Inception version that has a similar computational cost to Inception-v3  
+Inception-ResNet-v1: a hybrid Inception version that has a similar computational cost to Inception-v3. 5,10,5 inception layers.
 
 Inception-ResNet-v2: a costlier hybrid Inception version with significantly improved recognition performance  
 #### Scaling of the Residuals
