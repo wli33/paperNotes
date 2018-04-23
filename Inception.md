@@ -44,7 +44,6 @@ if the number of filters > 1000, the residual variants started to exhibit instab
 This could not be prevented by lowering the learning rate nor by adding an extra BN to this layer.
 ![](https://qph.fs.quoracdn.net/main-qimg-c4940ebeff4ccc7704e2596b435b2f25)   
 scaling down the residuals before adding them to the previous layer activation seemed to stabilize the training. scaling factors: 0.1- 0.3 
-(to be continued)
 ### Reference
 [v1 Going Deeper with Convolutions, 6.67% test error](http://arxiv.org/abs/1409.4842)   
 [v2 Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift, 4.8% test error](http://arxiv.org/abs/1502.03167)    
