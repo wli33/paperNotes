@@ -40,7 +40,7 @@ Inception-ResNet-v2: a costlier hybrid Inception version with significantly impr
 #### Scaling of the Residuals
 if the number of filters > 1000, the residual variants started to exhibit instabilities and the network has just “died” early in the training. the last layer before the average pooling started to produce only 0 after a few tens of thousands of iterations.
 This could not be prevented by lowering the learning rate nor by adding an extra BN to this layer.
-![](https://qph.fs.quoracdn.net/main-qimg-c4940ebeff4ccc7704e2596b435b2f25)
+![](https://qph.fs.quoracdn.net/main-qimg-c4940ebeff4ccc7704e2596b435b2f25)   
 scaling down the residuals before adding them to the previous layer activation seemed to stabilize the training. scaling factors: 0.1- 0.3 
 (to be continued)
 ### Reference
