@@ -30,8 +30,9 @@ How:
 2. with probability e, replace k with a sample drawn from the distribution u(k). they used the uniform distribution u(k) = 1/K  
 
 ### v4
-a pure Inception variant without residual connections with roughly the same recognition performance as Inception-ResNet-v2.
-Reduction achieved by valid padding.
+Reduction achieved by valid padding.  
+V4: a pure Inception variant without residual connections with roughly the same recognition performance as Inception-ResNet-v2. more stack layers in the inception block.  
+"the step time of Inception-v4 proved to be significantly slower in practice, probably due to the larger number of layers."
 
 Inception-ResNet-v1: a hybrid Inception version that has a similar computational cost to Inception-v3  
 
@@ -39,7 +40,7 @@ Inception-ResNet-v2: a costlier hybrid Inception version with significantly impr
 #### Scaling of the Residuals
 if the number of filters > 1000, the residual variants started to exhibit instabilities and the network has just “died” early in the training. the last layer before the average pooling started to produce only 0 after a few tens of thousands of iterations.
 This could not be prevented by lowering the learning rate nor by adding an extra BN to this layer.
-
+![](https://qph.fs.quoracdn.net/main-qimg-c4940ebeff4ccc7704e2596b435b2f25)
 scaling down the residuals before adding them to the previous layer activation seemed to stabilize the training. scaling factors: 0.1- 0.3 
 (to be continued)
 ### Reference
