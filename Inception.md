@@ -8,7 +8,8 @@ Problems:
 ![](https://hackathonprojects.files.wordpress.com/2016/09/naive.png?w=651&h=319)
 ![source:gitbub](https://user-images.githubusercontent.com/1249087/31683804-ea24827c-b34b-11e7-9934-eaf4fc80234a.png)  
 Pool layer has no parameter.   
-1×1 convolutions are used to compute reductions before the expensive 3×3 and 5×5 convolutions.    
+1×1 convolutions are used to compute reductions before the expensive 3×3 and 5×5 convolutions. 
+concat by stacking all the filters.  
 Use average pooling instead of FC.   
 To avoid gradient vanishing, add auxiliary classifiers connected to the intermediate layers during training and discard in test.   
 
