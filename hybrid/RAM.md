@@ -42,7 +42,8 @@ C. Location network: outputs the mean of the location policy at time, defined as
 fixed variance.
 ```
 def __call__(self, input):
-    % fl(h) = Linear(h) is the mean of the location. from 256 cell size to 2(y,x) 
+    # fl(h) = Linear(h) is the mean of the location. from 256 cell size to 2(y,x) 
+    # loc is discrete value hence non-differentiable. need to stop gradient to stop flow backward to loss
     mean = tf.clip_by_value(tf.nn.xw_plus_b(input, self.w, self.b), -1., 1.)
     mean = tf.stop_gradient(mean)
     if self._sampling:
