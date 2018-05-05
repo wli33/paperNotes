@@ -6,6 +6,7 @@ the first patch being gw × gw pixels, and each successive patch having twice th
 def get_glimpse(self, loc):
     """Take glimpse on the original images.
     loc: size of [batch_size,2], containing the y, x locations of the center of each window.
+    k=1 patch
     """
     imgs = tf.reshape(self.images_ph, [
         tf.shape(self.images_ph)[0], self.original_size, self.original_size,
