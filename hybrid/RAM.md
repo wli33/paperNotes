@@ -1,5 +1,5 @@
 An attention-based model may be better at both dealing with clutter and scaling up to large input images.
-[!](https://raw.githubusercontent.com/torch/torch.github.io/master/blog/_posts/images/rva-diagram.png)
+![](https://raw.githubusercontent.com/torch/torch.github.io/master/blog/_posts/images/rva-diagram.png)
 Retina and location encoding:
 the first patch being gw × gw pixels, and each successive patch having twice the width of the previous. The k patches are then all resized to gw × gw and concatenated. Glimpse locations l were encoded as real-valued (x, y) coordinates2 with (0, 0) being the center of the image x and (−1, −1) being the top left corner of x.
 ```
