@@ -55,6 +55,42 @@ def __call__(self, input):
     loc = tf.stop_gradient(loc)
     return loc, mean
 ```
+D. Core network: LSTM.  ht = fh(ht−1) = Rect(Linear(ht−1) + Linear(gt)). h0:zero_state, g1:random.
+```
+# number of examples
+N = tf.shape(images_ph)[0]
+init_loc = tf.random_uniform((N, 2), minval=-1, maxval=1)
+init_glimpse = gl(init_loc)
+# Core network.
+lstm_cell = rnn_cell.LSTMCell(config.cell_size, state_is_tuple=True)
+init_state = lstm_cell.zero_state(N, tf.float32)
+inputs = [init_glimpse]
+inputs.extend([0] * (config.num_glimpses)) # 8 steps
+outputs, _ = seq2seq.rnn_decoder(
+    inputs, init_state, lstm_cell, loop_function=get_next_input)
+    
+def get_next_input(output, i):
+  loc, loc_mean = loc_net(output)
+  gl_next = gl(loc)
+  loc_mean_arr.append(loc_mean)
+  sampled_loc_arr.append(loc)
+  return gl_next
+```
+perform a softmax classification to the last hidden state:
+```
+output = outputs[-1]
+# Build classification network.
+with tf.variable_scope('cls'):
+  w_logit = weight_variable((config.cell_output_size, config.num_classes))
+  b_logit = bias_variable((config.num_classes,))
+logits = tf.nn.xw_plus_b(output, w_logit, b_logit)
+#softmax = tf.nn.softmax(logits)
+
+# cross-entropy.
+xent = tf.nn.sparse_softmax_cross_entropy_with_logits(logits, labels_ph)
+xent = tf.reduce_mean(xent)
+pred_labels = tf.argmax(logits, 1)
+```
 (To be continued)
 ### Reference
 [Recurrent Models of Visual Attention V. Mnih et al](https://arxiv.org/pdf/1406.6247.pdf)   
