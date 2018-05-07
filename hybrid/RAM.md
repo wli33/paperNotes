@@ -43,6 +43,7 @@ fixed variance.
 ```
 def __call__(self, input):
     # fl(h) = Linear(h) is the mean of the location. from 256 cell size to 2(y,x) 
+    # mean: (batch_size,loc_dim = 2)
     # loc is discrete value hence non-differentiable. need to stop gradient to stop flow backward to loss
     mean = tf.clip_by_value(tf.nn.xw_plus_b(input, self.w, self.b), -1., 1.)
     mean = tf.stop_gradient(mean)
@@ -65,11 +66,12 @@ init_glimpse = gl(init_loc)
 lstm_cell = rnn_cell.LSTMCell(config.cell_size, state_is_tuple=True)
 init_state = lstm_cell.zero_state(N, tf.float32)
 inputs = [init_glimpse]
-inputs.extend([0] * (config.num_glimpses)) # 8 steps
+inputs.extend([0] * (config.num_glimpses)) # 8 steps followed by initial
 outputs, _ = seq2seq.rnn_decoder(
     inputs, init_state, lstm_cell, loop_function=get_next_input)
     
 def get_next_input(output, i):
+  # loc_mean:time_step, batch_size, loc_dims
   loc, loc_mean = loc_net(output)
   gl_next = gl(loc)
   loc_mean_arr.append(loc_mean)
@@ -90,6 +92,28 @@ logits = tf.nn.xw_plus_b(output, w_logit, b_logit)
 xent = tf.nn.sparse_softmax_cross_entropy_with_logits(logits, labels_ph)
 xent = tf.reduce_mean(xent)
 pred_labels = tf.argmax(logits, 1)
+```
+rewards and baseline.  bt is a baseline(Q function) that may depend on state(e.g. via hidden state) but not on action.
+```
+# 0/1 reward.
+reward = tf.cast(tf.equal(pred_labels, labels_ph), tf.float32)
+rewards = tf.expand_dims(reward, 1)  # [batch_sz, 1]
+rewards = tf.tile(rewards, (1, config.num_glimpses))  # [batch_sz, timesteps] same reward for each time step
+
+# Time independent baselines
+with tf.variable_scope('baseline'):
+  w_baseline = weight_variable((config.cell_output_size, 1))
+  b_baseline = bias_variable((1,))
+baselines = []
+for t, output in enumerate(outputs[1:]): #8 time_step, ignore the init_output
+  baseline_t = tf.nn.xw_plus_b(output, w_baseline, b_baseline)
+  baseline_t = tf.squeeze(baseline_t)
+  baselines.append(baseline_t)
+baselines = tf.pack(baselines)  # [timesteps, batch_sz]
+baselines = tf.transpose(baselines)  # [batch_sz, timesteps]
+baselines_mse = tf.reduce_mean(tf.square((rewards - baselines))) #Refit the baseline
+
+advs = rewards - tf.stop_gradient(baselines)
 ```
 (To be continued)
 ### Reference
