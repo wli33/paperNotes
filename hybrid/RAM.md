@@ -159,7 +159,24 @@ learning_rate = tf.maximum(learning_rate, config.lr_min)
 opt = tf.train.AdamOptimizer(learning_rate)
 train_op = opt.apply_gradients(zip(grads, var_list), global_step=global_step)
 ```
-(To be continued)
+The reference codes remove all the save and restore. Typical codes look like as follows:
+```
+saver = tf.train.Saver()
+utils.safe_mkdir('checkpoints')
+with tf.Session() as sess:
+     sess.run(self.iterator.initializer)
+     sess.run(tf.global_variables_initializer())
+     ckpt = tf.train.get_checkpoint_state(os.path.dirname('checkpoints/checkpoint'))
+
+     # if that checkpoint exists, restore from checkpoint
+     if ckpt and ckpt.model_checkpoint_path:
+         saver.restore(sess, ckpt.model_checkpoint_path)
+         
+     for index in range(num_train_steps):
+         #some code
+         if (index + 1) % self.skip_step == 0: 
+             saver.save(sess, 'checkpoints/model_name', index)
+```
 ### Reference
 [Recurrent Models of Visual Attention V. Mnih et al](https://arxiv.org/pdf/1406.6247.pdf)   
 [codes](https://github.com/zhongwen/RAM)
