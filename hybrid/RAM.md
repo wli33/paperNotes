@@ -74,7 +74,7 @@ outputs, _ = seq2seq.rnn_decoder(
     inputs, init_state, lstm_cell, loop_function=get_next_input)
     
 def get_next_input(output, i):
-  # loc_mean:time_step, batch_size, loc_dims
+  # loc_mean_arr:time_step, batch_size, loc_dims
   loc, loc_mean = loc_net(output)
   gl_next = gl(loc)
   loc_mean_arr.append(loc_mean)
@@ -145,7 +145,8 @@ The rest:
 # learning rate
 global_step = tf.get_variable(
     'global_step', [], initializer=tf.constant_initializer(0), trainable=False)
-training_steps_per_epoch = mnist.train.num_examples // config.batch_size
+# total batch
+training_steps_per_epoch = mnist.train.num_examples / config.batch_size
 starter_learning_rate = config.lr_start
 # decay per training epoch
 learning_rate = tf.train.exponential_decay(
