@@ -8,11 +8,13 @@ def get_glimpse(self, loc):
     Take glimpse on the original images.
     loc: size of [batch_size,2], containing the y, x locations of the center of each window.
     k=1 patch
+    glimpse_imgs: [batch_size, glimpse_height, glimpse_width, channels]
     """
     imgs = tf.reshape(self.images_ph, [
         tf.shape(self.images_ph)[0], self.original_size, self.original_size,
         self.num_channels
     ])
+    
     glimpse_imgs = tf.image.extract_glimpse(imgs,
                                             [self.win_size, self.win_size], loc)
     glimpse_imgs = tf.reshape(glimpse_imgs, [
@@ -47,6 +49,7 @@ def __call__(self, input):
     # loc is discrete value hence non-differentiable. need to stop gradient to stop flow backward to loss
     mean = tf.clip_by_value(tf.nn.xw_plus_b(input, self.w, self.b), -1., 1.)
     mean = tf.stop_gradient(mean)
+    #sample an action from gaussian distribution
     if self._sampling:
       loc = mean + tf.random_normal(
           (tf.shape(input)[0], self.loc_dim), stddev=self.loc_std)
@@ -93,7 +96,7 @@ xent = tf.nn.sparse_softmax_cross_entropy_with_logits(logits, labels_ph)
 xent = tf.reduce_mean(xent)
 pred_labels = tf.argmax(logits, 1)
 ```
-rewards and baseline.  bt is a baseline(Q function) that may depend on state(e.g. via hidden state) but not on action.
+rewards and baseline.  bt is a baseline(Q function) that may depend on state(e.g. via hidden state) but not on action. 
 ```
 # 0/1 reward.
 reward = tf.cast(tf.equal(pred_labels, labels_ph), tf.float32)
@@ -112,8 +115,48 @@ for t, output in enumerate(outputs[1:]): #8 time_step, ignore the init_output
 baselines = tf.pack(baselines)  # [timesteps, batch_sz]
 baselines = tf.transpose(baselines)  # [batch_sz, timesteps]
 baselines_mse = tf.reduce_mean(tf.square((rewards - baselines))) #Refit the baseline
-
+#stop gradient as baseline is a constant
 advs = rewards - tf.stop_gradient(baselines)
+```
+Action is a gassian distribution. 
+```
+def loglikelihood(mean_arr, sampled_arr, sigma):
+  mu = tf.pack(mean_arr)  # mu = [timesteps, batch_sz, loc_dim]
+  sampled = tf.pack(sampled_arr)  # same shape as mu
+  gaussian = distributions.Normal(mu, sigma)
+  logll = gaussian.log_pdf(sampled)  # [timesteps, batch_sz, loc_dim]
+  logll = tf.reduce_sum(logll, 2)
+  logll = tf.transpose(logll)  # [batch_sz, timesteps]
+  return logll
+  
+logll = loglikelihood(loc_mean_arr, sampled_loc_arr, config.loc_std)
+logllratio = tf.reduce_mean(logll * advs)
+```
+Output: Actions include classification of image and location output. The classification use a softmax layer and the cross-entropy loss.The location network use REINFORCE. Also we need to refit the baseline to the value of expected reward and mse is used.
+```
+var_list = tf.trainable_variables()
+# hybrid loss
+loss = -logllratio + xent + baselines_mse  # `-` for minimize
+grads = tf.gradients(loss, var_list)
+grads, _ = tf.clip_by_global_norm(grads, config.max_grad_norm)
+```
+The rest:
+```
+# learning rate
+global_step = tf.get_variable(
+    'global_step', [], initializer=tf.constant_initializer(0), trainable=False)
+training_steps_per_epoch = mnist.train.num_examples // config.batch_size
+starter_learning_rate = config.lr_start
+# decay per training epoch
+learning_rate = tf.train.exponential_decay(
+    starter_learning_rate,
+    global_step,
+    training_steps_per_epoch,
+    0.97,
+    staircase=True)
+learning_rate = tf.maximum(learning_rate, config.lr_min)
+opt = tf.train.AdamOptimizer(learning_rate)
+train_op = opt.apply_gradients(zip(grads, var_list), global_step=global_step)
 ```
 (To be continued)
 ### Reference
