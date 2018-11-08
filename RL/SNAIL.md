@@ -24,7 +24,7 @@ report the average accuracy on this last, (NK + 1)-th timestep.
 Learning to visually navigate a maze  
 - train on 1000 small mazes  
 - test on held-out small mazes and large mazes   
-![](https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/7e9c1e0d247b20a0683f4797d9ea248c3b53d424/13-Figure5-1.png)  
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh57tTx4aXbu1rY8lPi5QzHjbLoqNqYS1nkoY_2QDcyqWk-QSiWw)  
 Results: fast time to find goal.
 
 (To be continued)
