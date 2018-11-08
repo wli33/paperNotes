@@ -9,12 +9,18 @@ tasks by learning a high-level strategy that captures the essence of the problem
 Many recent meta-learning approaches are extensively hand-designed:   
 architectures specialized to a particular application, or hard-coding algorithmic components that constrain how the meta-learner solves the task. 
 
+#### architecture
 The author propose Simple Neural AttentIve Learner (or SNAIL) that use a combination of convolutions and soft attention layers. 
 
 ![](https://lilianweng.github.io/lil-log/assets/images/snail.png)
 In reinforcement-learning settings, it receives a sequence of observation-action-reward tuples.
 
-### Experiments
+Notes: 
+Dilated convolutions(paper by Fisher Yu and Vladlen Koltun): dilation of 0: w[0]*x[0] + w[1]*x[1] + w[2]*x[2]. dilation of 1:w[0]*x[0] + w[1]*x[2] + w[2]*x[4] 
+
+This can be very useful in some settings to use in conjunction with 0-dilated filters because it allows you to merge spatial information across the inputs much more agressively with fewer layers. Receptive field would grow much quicker.
+
+#### Experiments
 1. Image classification.  
 Dataset: 5-way Omniglot, 20-way Omniglot, and 5-way mini-ImageNet. 
 sample N classes from the dataset and K examples of each class, followed by a new, unlabeled example from one of the N classes.  
