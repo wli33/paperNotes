@@ -9,7 +9,8 @@ tasks by learning a high-level strategy that captures the essence of the problem
 Many recent meta-learning approaches are extensively hand-designed:   
 architectures specialized to a particular application, or hard-coding algorithmic components that constrain how the meta-learner solves the task. 
 
-The author propose simple and generic meta-learner architectures that use a combination of convolutions and soft attention layer.  
+The author propose Simple Neural AttentIve Learner (or SNAIL) that use a combination of convolutions and soft attention layers.  
+![](https://lilianweng.github.io/lil-log/assets/images/snail.png)
 
 Reference
 ----
