@@ -1,5 +1,15 @@
 A SIMPLE NEURAL ATTENTIVE META-LEARNER
 ---------
+Deep neural networks tend to struggle:   
+1. when data is scarce;  
+2. when need to adapt quickly to changes in the task.  
+Solution: training a meta-learner on a distribution of similar tasks, hope to generalize to novel but related
+tasks by learning a high-level strategy that captures the essence of the problem it is asked to solve.
+
+Many recent meta-learning approaches are extensively hand-designed:   
+architectures specialized to a particular application, or hard-coding algorithmic components that constrain how the meta-learner solves the task. 
+
+The author propose simple and generic meta-learner architectures that use a combination of convolutions and soft attention layer.  
 
 Reference
 ----
