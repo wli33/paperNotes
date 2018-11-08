@@ -14,6 +14,20 @@ The author propose Simple Neural AttentIve Learner (or SNAIL) that use a combina
 ![](https://lilianweng.github.io/lil-log/assets/images/snail.png)
 In reinforcement-learning settings, it receives a sequence of observation-action-reward tuples.
 
+###Experiments
+1. Image classification.  
+Dataset: 5-way Omniglot, 20-way Omniglot, and 5-way mini-ImageNet. 
+sample N classes from the dataset and K examples of each class, followed by a new, unlabeled example from one of the N classes.  
+report the average accuracy on this last, (NK + 1)-th timestep. 
+
+2. Reinforcement learning(MULTI-ARMED BANDITS,TABULAR MDPS,CONTINUOUS CONTROL, visual navigation).
+Learning to visually navigate a maze  
+- train on 1000 small mazes  
+- test on held-out small mazes and large mazes  
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh57tTx4aXbu1rY8lPi5QzHjbLoqNqYS1nkoY_2QDcyqWk-QSiWw)
+Results: fast time to find goal.
+
 (To be continued)
 
 Reference
