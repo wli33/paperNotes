@@ -15,7 +15,7 @@ The author propose Simple Neural AttentIve Learner (or SNAIL) that use a combina
 ![](https://lilianweng.github.io/lil-log/assets/images/snail.png)
 In reinforcement-learning settings, it receives a sequence of observation-action-reward tuples.
 
-Notes: 
+Notes:    
 Dilated convolutions(paper by Fisher Yu and Vladlen Koltun): dilation of 0: w[0]*x[0] + w[1]*x[1] + w[2]*x[2]. dilation of 1:w[0]*x[0] + w[1]*x[2] + w[2]*x[4] 
 
 This can be very useful in some settings to use in conjunction with 0-dilated filters because it allows you to merge spatial information across the inputs much more agressively with fewer layers. Receptive field would grow much quicker.
