@@ -14,7 +14,7 @@ The author propose Simple Neural AttentIve Learner (or SNAIL) that use a combina
 ![](https://lilianweng.github.io/lil-log/assets/images/snail.png)
 In reinforcement-learning settings, it receives a sequence of observation-action-reward tuples.
 
-###Experiments
+### Experiments
 1. Image classification.  
 Dataset: 5-way Omniglot, 20-way Omniglot, and 5-way mini-ImageNet. 
 sample N classes from the dataset and K examples of each class, followed by a new, unlabeled example from one of the N classes.  
