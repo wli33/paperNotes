@@ -32,3 +32,4 @@ Results: fast time to find goal.
 Reference
 ----
 [Mishra, Nikhil, et al. "A simple neural attentive meta-learner." (2018).](https://arxiv.org/pdf/1707.03141.pdf)
+[Meta-learning PPT from cs294](http://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-20.pdf)
