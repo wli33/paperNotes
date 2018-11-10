@@ -13,7 +13,9 @@ architectures specialized to a particular application, or hard-coding algorithmi
 The author propose Simple Neural AttentIve Learner (or SNAIL) that use a combination of convolutions and soft attention layers. 
 
 ![](https://lilianweng.github.io/lil-log/assets/images/snail.png)
-In reinforcement-learning settings, it receives a sequence of observation-action-reward tuples.
+In reinforcement-learning settings, it receives a sequence of observation-action-reward tuples.  
+consist of dense block, TC block and attention block:  
+![](https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/7e9c1e0d247b20a0683f4797d9ea248c3b53d424/7-Figure2-1.png)
 
 #### Experiments
 1. Image classification.  
