@@ -14,7 +14,7 @@ The author propose Simple Neural AttentIve Learner (or SNAIL) that use a combina
 
 ![](https://lilianweng.github.io/lil-log/assets/images/snail.png)
 In reinforcement-learning settings, it receives a sequence of observation-action-reward tuples.  
-Consist of dense block, TC block and attention block:  
+Consist of dense block, TC block and attention block  
 ![](https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/7e9c1e0d247b20a0683f4797d9ea248c3b53d424/7-Figure2-1.png)
 
 #### Experiments
@@ -43,12 +43,14 @@ dilated causal convolution layer: make sure to avoid use the future to predict t
 Attention block performs a single key-value lookup, proposed by Vaswani et al. (2017a):  
 ![](https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/img/MultiHead.png)  
  function ATTENTIONBLOCK(inputs, key size K, value size V ):
-2: keys, query = affine(inputs, K), affine(inputs, K)
-3: logits = matmul(query, transpose(keys))
-4: probs = CausallyMaskedSoftmax(logits / √K)
-5: values = affine(inputs, V )
-6: read = matmul(probs, values)
-7: return concat(inputs, read)
+2: keys, query = affine(inputs, K), affine(inputs, K)  
+3: logits = matmul(query, transpose(keys))  
+4: probs = CausallyMaskedSoftmax(logits / √K)  
+5: values = affine(inputs, V )  
+6: read = matmul(probs, values)   
+7: return concat(inputs, read)    
+CausallyMaskedSoftmax(·) zeros out the appropriate probabilities before normalization, so
+that a particular timestep’s query cannot have access to future keys/values.
 
 (To be continued)
 
