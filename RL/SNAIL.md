@@ -30,7 +30,7 @@ Learning to visually navigate a maze
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh57tTx4aXbu1rY8lPi5QzHjbLoqNqYS1nkoY_2QDcyqWk-QSiWw)  
 Results: fast time to find goal.
 
-####A few Notes:  
+#### A few Notes:  
 Dilated convolutions([paper by Fisher Yu and Vladlen Koltun](https://arxiv.org/abs/1511.07122)): dilation of 0: w[0]*x[0] + w[1]*x[1] + w[2]*x[2]. dilation of 1:w[0]*x[0] + w[1]*x[2] + w[2]*x[4] 
 
 This can be very useful in some settings to use in conjunction with 0-dilated filters because it allows you to merge spatial information across the inputs much more agressively with fewer layers. Receptive field would grow much quicker.([cs231](http://cs231n.github.io/convolutional-networks/))
@@ -41,7 +41,7 @@ dilated causal convolution layer: make sure to avoid use the future to predict t
 ![](https://jeddy92.github.io/images/ts_conv/WaveNet_dilatedconv.png)
 
 Attention block performs a single key-value lookup, proposed by Vaswani et al. (2017a):  
-![](https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/img/MultiHead.png)
+![](https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/img/MultiHead.png)  
  function ATTENTIONBLOCK(inputs, key size K, value size V ):
 2: keys, query = affine(inputs, K), affine(inputs, K)
 3: logits = matmul(query, transpose(keys))
