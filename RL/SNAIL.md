@@ -35,8 +35,8 @@ Dilated convolutions([paper by Fisher Yu and Vladlen Koltun](https://arxiv.org/a
 
 This can be very useful in some settings to use in conjunction with 0-dilated filters because it allows you to merge spatial information across the inputs much more agressively with fewer layers. Receptive field would grow much quicker.([cs231](http://cs231n.github.io/convolutional-networks/))
 
-DeepMind’s WaveNet
-dilated causal convolution layer: make sure to avoid use the future to predict the past without an explosion in model complexity.  
+DeepMind’s WaveNet   
+Dilated causal convolution layer: make sure to avoid use the future to predict the past without an explosion in model complexity.  
 ![](https://jeddy92.github.io/images/ts_conv/WaveNet_causalconv.png)  
 ![](https://jeddy92.github.io/images/ts_conv/WaveNet_dilatedconv.png)
 
