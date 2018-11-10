@@ -14,7 +14,7 @@ The author propose Simple Neural AttentIve Learner (or SNAIL) that use a combina
 
 ![](https://lilianweng.github.io/lil-log/assets/images/snail.png)
 In reinforcement-learning settings, it receives a sequence of observation-action-reward tuples.  
-consist of dense block, TC block and attention block:  
+Consist of dense block, TC block and attention block:  
 ![](https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/7e9c1e0d247b20a0683f4797d9ea248c3b53d424/7-Figure2-1.png)
 
 #### Experiments
@@ -40,10 +40,14 @@ dilated causal convolution layer: make sure to avoid use the future to predict t
 ![](https://jeddy92.github.io/images/ts_conv/WaveNet_causalconv.png)  
 ![](https://jeddy92.github.io/images/ts_conv/WaveNet_dilatedconv.png)
 
+Attention block performs a single key-value lookup, proposed by Vaswani et al. (2017a):  
+![](https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/img/MultiHead.png)
+
 (To be continued)
 
 Reference
 ----
 [Mishra, Nikhil, et al. "A simple neural attentive meta-learner." (2018).](https://arxiv.org/pdf/1707.03141.pdf)  
+[Vaswani, Ashish, et al. "Attention is all you need." Advances in Neural Information Processing Systems. 2017.](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf)
 [Time Series Forecasting with Convolutional Neural Networks - a Look at WaveNet](https://jeddy92.github.io/JEddy92.github.io/ts_seq2seq_conv/)   
 [Meta-learning PPT from cs294](http://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-20.pdf)
