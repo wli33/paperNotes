@@ -42,7 +42,7 @@ Dilated causal convolution layer: make sure to avoid use the future to predict t
 
 Attention block performs a single key-value lookup, proposed by Vaswani et al. (2017a):  
 ![](https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/img/MultiHead.png)  
- function ATTENTIONBLOCK(inputs, key size K, value size V ):
+ function ATTENTIONBLOCK(inputs, key size K, value size V ):  
 2: keys, query = affine(inputs, K), affine(inputs, K)  
 3: logits = matmul(query, transpose(keys))  
 4: probs = CausallyMaskedSoftmax(logits / √K)  
