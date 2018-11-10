@@ -23,7 +23,7 @@ Dataset: 5-way Omniglot, 20-way Omniglot, and 5-way mini-ImageNet.
 sample N classes from the dataset and K examples of each class, followed by a new, unlabeled example from one of the N classes.  
 report the average accuracy on this last, (NK + 1)-th timestep. 
 
-2. Reinforcement learning(MULTI-ARMED BANDITS,TABULAR MDPS,CONTINUOUS CONTROL, visual navigation).
+2. Reinforcement learning(Multi-armed bandits,tabular MDPs,continuous Control, visual navigation).
 Learning to visually navigate a maze  
 - train on 1000 small mazes  
 - test on held-out small mazes and large mazes   
