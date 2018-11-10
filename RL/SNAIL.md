@@ -15,11 +15,6 @@ The author propose Simple Neural AttentIve Learner (or SNAIL) that use a combina
 ![](https://lilianweng.github.io/lil-log/assets/images/snail.png)
 In reinforcement-learning settings, it receives a sequence of observation-action-reward tuples.
 
-Notes:    
-Dilated convolutions([paper by Fisher Yu and Vladlen Koltun](https://arxiv.org/abs/1511.07122)): dilation of 0: w[0]*x[0] + w[1]*x[1] + w[2]*x[2]. dilation of 1:w[0]*x[0] + w[1]*x[2] + w[2]*x[4] 
-
-This can be very useful in some settings to use in conjunction with 0-dilated filters because it allows you to merge spatial information across the inputs much more agressively with fewer layers. Receptive field would grow much quicker.([cs231](http://cs231n.github.io/convolutional-networks/))
-
 #### Experiments
 1. Image classification.  
 Dataset: 5-way Omniglot, 20-way Omniglot, and 5-way mini-ImageNet. 
@@ -33,9 +28,20 @@ Learning to visually navigate a maze
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh57tTx4aXbu1rY8lPi5QzHjbLoqNqYS1nkoY_2QDcyqWk-QSiWw)  
 Results: fast time to find goal.
 
+A few Notes:  
+Dilated convolutions([paper by Fisher Yu and Vladlen Koltun](https://arxiv.org/abs/1511.07122)): dilation of 0: w[0]*x[0] + w[1]*x[1] + w[2]*x[2]. dilation of 1:w[0]*x[0] + w[1]*x[2] + w[2]*x[4] 
+
+This can be very useful in some settings to use in conjunction with 0-dilated filters because it allows you to merge spatial information across the inputs much more agressively with fewer layers. Receptive field would grow much quicker.([cs231](http://cs231n.github.io/convolutional-networks/))
+
+DeepMind’s WaveNet
+dilated causal convolution layer: make sure to avoid use the future to predict the past without an explosion in model complexity.  
+![](https://jeddy92.github.io/images/ts_conv/WaveNet_causalconv.png)  
+![](https://jeddy92.github.io/images/ts_conv/WaveNet_dilatedconv.png)
+
 (To be continued)
 
 Reference
 ----
-[Mishra, Nikhil, et al. "A simple neural attentive meta-learner." (2018).](https://arxiv.org/pdf/1707.03141.pdf)
+[Mishra, Nikhil, et al. "A simple neural attentive meta-learner." (2018).](https://arxiv.org/pdf/1707.03141.pdf)  
+[Time Series Forecasting with Convolutional Neural Networks - a Look at WaveNet](https://jeddy92.github.io/JEddy92.github.io/ts_seq2seq_conv/)   
 [Meta-learning PPT from cs294](http://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-20.pdf)
