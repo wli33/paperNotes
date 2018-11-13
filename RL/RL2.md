@@ -1,3 +1,7 @@
+RL2: FAST REINFORCEMENT LEARNING VIA SLOW REINFORCEMENT LEARNING
+---------
+investigated meta-learning in reinforcement-learning domains using traditional RNN architectures.
+
 Reference
 ----
 [Yan Duan, John Schulman, Xi Chen, Peter L. Bartlett, Ilya Sutskever, and Pieter Abbeel. Rl$ˆ2$:
