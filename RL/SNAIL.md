@@ -52,7 +52,6 @@ Attention block performs a single key-value lookup, proposed by Vaswani et al. (
 CausallyMaskedSoftmax(·) zeros out the appropriate probabilities before normalization, so
 that a particular timestep’s query cannot have access to future keys/values.
 
-(To be continued)
 
 Reference
 ----
