@@ -1,6 +1,6 @@
 RL2: FAST REINFORCEMENT LEARNING VIA SLOW REINFORCEMENT LEARNING
 ---------
-The learning process of deep RL requires a huge number of trials.
+The learning process of deep RL requires a huge number of trials.   
 The authors investigated meta-learning in reinforcement-learning domains using traditional RNN architectures. 
 
 (To be continued)  
