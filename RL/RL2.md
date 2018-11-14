@@ -5,7 +5,7 @@ The authors investigated meta-learning in reinforcement-learning domains using t
 
 Method
 ---------
-Assume a set of MDPs,and a distribution over them. sample a fixed MDP, and applied to a trial. each trial have n=2 episodes. 
+Assume a set of MDPs,and a distribution over them. sample a fixed MDP, and applied to a trial. each trial have e.g. n=2 episodes. 
 For each episode, a fresh s0 is drawn from the initial state distribution specific to the corresponding MDP. The hidden state is preserved to the next episode, but not preserved between trials.  
 * Input:(current state, last action, last reward, flagTermination)
 * The output of the GRU is fed to a FC layer followed by a softmax function.
