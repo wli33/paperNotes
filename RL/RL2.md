@@ -16,6 +16,11 @@ Optimization: TRPO(Schulman et al., 2015),optionally apply Generalized Advantage
 
 Evaluation
 ------------
+Two sets of experiments:
+
+MABs and Tabular (to test if the algorithm is close to being optimal)
+Vision-based navigation task (to test scalability)
+
 (To be continued)  
 
 Reference
