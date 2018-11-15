@@ -18,8 +18,9 @@ Evaluation
 ------------
 Two sets of experiments:
 
-* MABs and Tabular (to test if the algorithm is close to being optimal)  
-compared with: Ramdom, Gittins index, UCB1,Thompson sampling,e-Greedy, Greedy.
+* MABs and Tabular MDPs (to test if the algorithm is close to being optimal)  
+MABs compared with: Ramdom, Gittins index, UCB1,Thompson sampling,e-Greedy, Greedy.
+Tabular MDPs compared with: Ramdom(uniform action), PSRL(generalization of Thompson sampling), BEB(adds an exploration bonus),UCRL2,e-Greedy, Greedy.
 * Vision-based navigation task (to test scalability)  
 receives +1 reward when reaches the target, −0.001 when it hits the wall, and −0.04 per time step to encourage it to reach targets faster.
 Visual navigation alone is challenging:
