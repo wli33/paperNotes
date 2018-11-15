@@ -22,7 +22,7 @@ Two sets of experiments:
 * Vision-based navigation task (to test scalability)  
 receives +1 reward when reaches the target, −0.001 when it hits the wall, and −0.04 per time step to encourage it to reach targets faster.
 
-![](https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/051d94a2aec708fe353319ab4a9643b66daa6e89/8-Figure6-1.png)
+Figure 6: [](https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/051d94a2aec708fe353319ab4a9643b66daa6e89/8-Figure6-1.png)
 
 6a and 6b: the agent should remember the target’s location, and utilize it to act optimally in the second episode.
 6c and 6d: occasionally the agent forgets about where the target was, and continues to explore in the second episode.  
