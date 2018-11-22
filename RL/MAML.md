@@ -6,7 +6,7 @@ Train the model’s initial parameters such that the model has maximal performan
 For example, if we have two mutually exclusive tasks: go fwd and go bwd. You can't max reward for all the tasks but we can optimize rewards after a gradient step coz the gradient step gives your information about the task you suppose to perform.  
 
 Advantages:  
-does not expand the number of learned parameters nor place constraints on the model architecture.
+does not expand the number of learned parameters nor place constraints on the model architecture.   
 broadly suitable for many tasks.
 a small number of gradient updates will lead to fast learning on a new task.
 
