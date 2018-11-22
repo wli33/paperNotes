@@ -7,7 +7,7 @@ For example, if we have two mutually exclusive tasks: go fwd and go bwd. You can
 
 Advantages:  
 does not expand the number of learned parameters nor place constraints on the model architecture.   
-broadly suitable for many tasks.
+broadly suitable for many tasks.   
 a small number of gradient updates will lead to fast learning on a new task.
 
 Algorithms   
