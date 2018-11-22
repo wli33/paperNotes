@@ -16,6 +16,41 @@ Instead of supervised meta-learning(mapping (Dtrain,x)->y by rnn), use MAML mapp
 
 ![](http://bair.berkeley.edu/blog/assets/maml/maml.png)  
 ![](https://cdn-images-1.medium.com/max/1600/1*_pgbRGIlmCRsYNBHl71mUA.png)  
+```
+# a: training data for inner gradient, b: test data for meta gradient
+ """ Perform gradient descent for one task in the meta-batch. """
+ 
+ task_outputa = self.forward(inputa, weights, reuse=reuse)  # only reuse on the first iter
+ task_lossa = self.loss_func(task_outputa, labela)
+
+grads = tf.gradients(task_lossa, list(weights.values()))
+if FLAGS.stop_grad:
+    grads = [tf.stop_gradient(grad) for grad in grads]
+    gradients = dict(zip(weights.keys(), grads))
+    ## update theta_prime
+    fast_weights = dict(zip(weights.keys(), [weights[key] - self.update_lr*gradients[key] for key in weights.keys()]))
+    ## use updated theta_prime to get the pred y in query set and record loss for a single task
+    output = self.forward(inputb, fast_weights, reuse=True)
+    task_outputbs.append(output)
+    task_lossesb.append(self.loss_func(output, labelb))
+    
+    ## continue from the second example to the end
+    for j in range(num_updates - 1):
+        ## the loss for the support set, using SGD to update the inner loop.
+        loss = self.loss_func(self.forward(inputa, fast_weights, reuse=True), labela)
+        grads = tf.gradients(loss, list(fast_weights.values()))
+            if FLAGS.stop_grad:
+                grads = [tf.stop_gradient(grad) for grad in grads]
+            gradients = dict(zip(fast_weights.keys(), grads))
+            fast_weights = dict(zip(fast_weights.keys(), [fast_weights[key] - self.update_lr*gradients[key] for key in     fast_weights.keys()]))
+            ## send the updated theta_prime to get the pred the kth y in query set and record loss
+            output = self.forward(inputb, fast_weights, reuse=True)
+            task_outputbs.append(output)
+            task_lossesb.append(self.loss_func(output, labelb))
+
+                task_output = [task_outputa, task_outputbs, task_lossa, task_lossesb]
+
+```
 Reference
 ---------
 [Original paper](https://arxiv.org/pdf/1703.03400.pdf)  
