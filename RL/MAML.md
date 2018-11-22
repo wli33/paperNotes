@@ -14,7 +14,8 @@ Algorithms
 ---------
 Instead of supervised meta-learning(mapping (Dtrain,x)->y by rnn), use MAML mapping f(Dtrain,x)->y). MAML mapping f = (updated theta_i,x) for each task i.  
 
-![](http://bair.berkeley.edu/blog/assets/maml/maml.png)
+![](http://bair.berkeley.edu/blog/assets/maml/maml.png)  
+![](https://cdn-images-1.medium.com/max/1600/1*_pgbRGIlmCRsYNBHl71mUA.png)  
 Reference
 ---------
 [Original paper](https://arxiv.org/pdf/1703.03400.pdf)  
