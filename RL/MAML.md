@@ -20,7 +20,7 @@ Instead of supervised meta-learning(mapping (Dtrain,x)->y by rnn), use MAML mapp
 Implemetation
 ----------
 ```
-# source code from the reference link
+# source code from the author's git, listed the reference link
 # a: training data for inner gradient, b: test data for meta gradient
  """ Perform gradient descent for one task in the meta-batch. """
  
