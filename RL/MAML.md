@@ -1,4 +1,3 @@
-(to do)  
 Introduction
 ---------
 An algorithm that is  general and model-agnostic.  
@@ -11,9 +10,10 @@ does not expand the number of learned parameters nor place constraints on the mo
 broadly suitable for many tasks.
 a small number of gradient updates will lead to fast learning on a new task.
 
-Algorithms
+Algorithms   
 ---------
 Instead of supervised meta-learning(mapping (Dtrain,x)->y by rnn), use MAML mapping f(Dtrain,x)->y). MAML mapping f = (updated theta_i,x) for each task i.  
+
 ![](http://bair.berkeley.edu/blog/assets/maml/maml.png)
 Reference
 ---------
