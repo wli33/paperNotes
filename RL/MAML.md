@@ -16,7 +16,11 @@ Instead of supervised meta-learning(mapping (Dtrain,x)->y by rnn), use MAML mapp
 
 ![](http://bair.berkeley.edu/blog/assets/maml/maml.png)  
 ![](https://cdn-images-1.medium.com/max/1600/1*_pgbRGIlmCRsYNBHl71mUA.png)  
+
+Implemetation
+----------
 ```
+# source code from the reference link
 # a: training data for inner gradient, b: test data for meta gradient
  """ Perform gradient descent for one task in the meta-batch. """
  
