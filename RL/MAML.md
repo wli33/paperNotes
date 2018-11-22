@@ -26,29 +26,42 @@ Instead of supervised meta-learning(mapping (Dtrain,x)->y by rnn), use MAML mapp
 grads = tf.gradients(task_lossa, list(weights.values()))
 if FLAGS.stop_grad:
     grads = [tf.stop_gradient(grad) for grad in grads]
-    gradients = dict(zip(weights.keys(), grads))
-    ## update theta_prime
-    fast_weights = dict(zip(weights.keys(), [weights[key] - self.update_lr*gradients[key] for key in weights.keys()]))
-    ## use updated theta_prime to get the pred y in query set and record loss for a single task
-    output = self.forward(inputb, fast_weights, reuse=True)
-    task_outputbs.append(output)
-    task_lossesb.append(self.loss_func(output, labelb))
+gradients = dict(zip(weights.keys(), grads))
     
-    ## continue from the second example to the end
-    for j in range(num_updates - 1):
-        ## the loss for the support set, using SGD to update the inner loop.
-        loss = self.loss_func(self.forward(inputa, fast_weights, reuse=True), labela)
-        grads = tf.gradients(loss, list(fast_weights.values()))
-            if FLAGS.stop_grad:
-                grads = [tf.stop_gradient(grad) for grad in grads]
-            gradients = dict(zip(fast_weights.keys(), grads))
-            fast_weights = dict(zip(fast_weights.keys(), [fast_weights[key] - self.update_lr*gradients[key] for key in     fast_weights.keys()]))
-            ## send the updated theta_prime to get the pred the kth y in query set and record loss
-            output = self.forward(inputb, fast_weights, reuse=True)
-            task_outputbs.append(output)
-            task_lossesb.append(self.loss_func(output, labelb))
+## update theta_prime
+fast_weights = dict(zip(weights.keys(), [weights[key] - self.update_lr*gradients[key] for key in weights.keys()]))
+    
+## use updated theta_prime to get the pred y in query set and record loss for a single task
+output = self.forward(inputb, fast_weights, reuse=True)
+task_outputbs.append(output)
+task_lossesb.append(self.loss_func(output, labelb))
+    
+## continue from the second example to the end
+for j in range(num_updates - 1):
+    ## the loss for the support set, using SGD to update the inner loop.
+    loss = self.loss_func(self.forward(inputa, fast_weights, reuse=True), labela)
+    grads = tf.gradients(loss, list(fast_weights.values()))
+    if FLAGS.stop_grad:
+        grads = [tf.stop_gradient(grad) for grad in grads]
+        gradients = dict(zip(fast_weights.keys(), grads))
+        fast_weights = dict(zip(fast_weights.keys(), [fast_weights[key] - self.update_lr*gradients[key] for key in     fast_weights.keys()]))
+        ## send the updated theta_prime to get the pred the kth y in query set and record loss
+        output = self.forward(inputb, fast_weights, reuse=True)
+        task_outputbs.append(output)
+        task_lossesb.append(self.loss_func(output, labelb))
 
-                task_output = [task_outputa, task_outputbs, task_lossa, task_lossesb]
+task_output = [task_outputa, task_outputbs, task_lossa, task_lossesb]
+
+### for meta learning, get the loss for each shot
+self.metaval_total_loss1 = total_loss1 = tf.reduce_sum(lossesa) / tf.to_float(FLAGS.meta_batch_size)
+self.metaval_total_losses2 = total_losses2 = [tf.reduce_sum(lossesb[j]) / tf.to_float(FLAGS.meta_batch_size) for j in range(num_updates)]
+
+### the 1st shot support set loss, 'Pre-update loss'
+self.pretrain_op = tf.train.AdamOptimizer(self.meta_lr).minimize(total_loss1)
+
+### use the last shot loss to bp, 'Post-update loss'
+self.gvs = gvs = optimizer.compute_gradients(self.total_losses2[FLAGS.num_updates-1])                
+self.metatrain_op = optimizer.apply_gradients(gvs)
 
 ```
 Reference
